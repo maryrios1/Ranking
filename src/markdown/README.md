@@ -34,7 +34,7 @@ These are the current active challenges, which is a list of the people who have 
 Matches that already happened during this week.
 
 |Player|Challenged|Result|Score|
-|---|---|---|---|---|
+|---|---|---|---|
 |`José "El Iceberg" Rosales`|`Ángel Lee`|**Won**|*3-0*|
 |`José "El Iceberg" Rosales` | `Neku` | **won** |*3-1*|
 |`Ángel Lee` | `César Gutman` | **won** |*3-2*|
