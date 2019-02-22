@@ -1,29 +1,40 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ReactMarkdown from 'react-markdown'
-import termsFrPath from './markdown/README.md'
+import myUsers from './markdown/config.json';
+import myData from './markdown/ranking.json';
 
-class App extends Component {
-  constructor(props) {
-    super(props)
+// New component class starts here:
+class App extends Component{
+    constructor(props){
+        super(props);
+        this.state = { rankList:[],userList:[],lastUpdate:null }
+        
+    }
 
-    this.state = { terms: null }
+    componentWillMount() {
+    this.setState({ 
+          userList: myUsers.users_dict,
+          lastUpdate: myData.last_update_ts,
+          rankList: myData.scoreboard
+            //myData.users_dict//,
+          //scoreboard: myData.scoreboard,
+          //inProgres_scoreboard: myData.in_progress.scoreboard
+        });
+    
   }
+    
+  render(){
+      //console.log("list");
+      console.log(this.state.rankList);
 
-  componentWillMount() {
-    fetch(termsFrPath).then((response) => response.text()).then((text) => {
-      this.setState({ terms: text })
-    })
-  }
-
-  render() {
-    return (
-      <div className="content">
-        <ReactMarkdown source={this.state.terms} />
-      </div>
-    )
+    return (<div className="content">
+            {Object.keys(this.state.rankList).map((key) => (
+            <p key={key}>{this.state.rankList[key]}</p>
+        ))}
+    </div>);  
   }
 }
 
+//ReactDOM.render(<App />,document.getElementById('app'));
 export default App;
